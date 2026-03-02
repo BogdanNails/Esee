@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esee AI Coach</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.min.mjs" type="module"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Esee AI Coach</h1>
+        <p>
+          Incarca eseuri PDF la romana si primeste explicatii clare, intrebari de recapitulare si suport AI pentru invatare.
+        </p>
+      </header>
+
+      <section class="panel">
+        <h2>1) Configurare</h2>
+        <label for="apiKey">OpenAI API key (optional, pentru chat AI):</label>
+        <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" />
+      </section>
+
+      <section class="panel">
+        <h2>2) Incarca eseul PDF</h2>
+        <input id="pdfInput" type="file" accept="application/pdf" />
+        <p id="status" class="status">Astept un fisier PDF...</p>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Rezumat rapid</h2>
+          <button id="summarizeBtn" disabled>Genereaza rezumat</button>
+          <div id="summary" class="result"></div>
+        </article>
+
+        <article class="panel">
+          <h2>Carduri de invatare</h2>
+          <button id="flashcardsBtn" disabled>Genereaza carduri</button>
+          <ul id="flashcards" class="flashcards"></ul>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Asistent AI (Q&A)</h2>
+        <div id="chat" class="chat"></div>
+        <div class="chat-controls">
+          <textarea id="question" placeholder="Ex: Care este tema centrala si cum o argumenteaza autorul?"></textarea>
+          <button id="askBtn" disabled>Intreaba AI</button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
