@@ -1,12 +1,11 @@
 :root {
-  color-scheme: light;
-  --bg: #f5f7fb;
-  --card: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --border: #dbe1ea;
+  --bg: #e8eaf2;
+  --card: #f5f6fb;
+  --border: #cfd5e4;
+  --text: #222738;
+  --muted: #5f6982;
+  --primary: #5a4fd4;
+  --primary-dark: #4d43bb;
 }
 
 * {
@@ -20,38 +19,32 @@ body {
   color: var(--text);
 }
 
-.container {
+.layout {
   width: min(1100px, 92%);
-  margin: 2rem auto;
+  margin: 28px auto;
   display: grid;
-  gap: 1rem;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
 }
 
-header {
-  background: linear-gradient(135deg, #dbeafe, #eff6ff);
-  border: 1px solid #bfdbfe;
-  border-radius: 14px;
-  padding: 1.2rem 1.4rem;
-}
-
-.panel {
+.card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: 16px;
+  padding: 20px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-label,
+.intro,
+.hint,
 .status {
-  display: block;
-  margin-bottom: 0.5rem;
   color: var(--muted);
+}
+
+.upload-box {
+  border: 2px dashed #b7c2ef;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 12px 0;
 }
 
 input,
@@ -60,22 +53,25 @@ button {
   font: inherit;
 }
 
-input[type='password'],
+input,
 textarea {
   width: 100%;
-  border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 0.7rem;
+  border: 1px solid #c6cde0;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #f9fafe;
 }
 
 button {
+  width: 100%;
   border: none;
   border-radius: 10px;
+  padding: 10px 12px;
   background: var(--primary);
-  color: #fff;
-  padding: 0.65rem 0.9rem;
+  color: white;
+  font-weight: 600;
   cursor: pointer;
-  margin-bottom: 0.75rem;
 }
 
 button:hover:enabled {
@@ -83,49 +79,67 @@ button:hover:enabled {
 }
 
 button:disabled {
-  opacity: 0.55;
   cursor: not-allowed;
+  opacity: 0.55;
 }
 
-.result {
+.preview,
+.chat,
+.result,
+.result-list {
+  border: 1px solid #c6cde0;
+  border-radius: 12px;
+  background: #f7f8fd;
+  padding: 12px;
+}
+
+.preview {
+  min-height: 110px;
+  max-height: 240px;
+  overflow: auto;
   white-space: pre-wrap;
-  line-height: 1.5;
 }
 
-.flashcards {
-  margin: 0;
-  padding-left: 1rem;
+.tools-grid {
   display: grid;
-  gap: 0.5rem;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.tool h3 {
+  margin-bottom: 8px;
 }
 
 .chat {
-  min-height: 120px;
-  border: 1px solid var(--border);
+  min-height: 520px;
+  max-height: 520px;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+.msg {
+  background: #e7e3fb;
   border-radius: 10px;
-  padding: 0.7rem;
-  margin-bottom: 0.7rem;
-  background: #fafcff;
+  padding: 10px;
+  margin-bottom: 8px;
+  white-space: pre-wrap;
 }
 
-.chat-entry {
-  margin-bottom: 0.7rem;
-  padding-bottom: 0.7rem;
-  border-bottom: 1px dashed var(--border);
+.msg strong {
+  display: block;
+  margin-bottom: 4px;
 }
 
-.chat-entry:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
+.result-list {
+  padding-left: 22px;
 }
 
-.role {
-  font-weight: 700;
-  margin-bottom: 0.2rem;
-}
+@media (max-width: 920px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
 
-.chat-controls {
-  display: grid;
-  gap: 0.6rem;
+  .chat {
+    min-height: 300px;
+  }
 }

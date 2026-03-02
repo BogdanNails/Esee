@@ -3,52 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Esee AI Coach</title>
+    <title>MentorEseu AI</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.min.mjs" type="module"></script>
   </head>
   <body>
-    <main class="container">
-      <header>
-        <h1>Esee AI Coach</h1>
-        <p>
-          Incarca eseuri PDF la romana si primeste explicatii clare, intrebari de recapitulare si suport AI pentru invatare.
+    <main class="layout">
+      <section class="card left">
+        <h1>MentorEseu AI</h1>
+        <p class="intro">
+          Încarcă un eseu PDF la limba română, extrage textul, iar asistentul îți explică pas cu pas,
+          îți face structură de învățare și mock tests.
         </p>
-      </header>
 
-      <section class="panel">
-        <h2>1) Configurare</h2>
-        <label for="apiKey">OpenAI API key (optional, pentru chat AI):</label>
-        <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" />
-      </section>
+        <div class="upload-box">
+          <h2>1) Alege fișierul PDF</h2>
+          <input id="pdfInput" type="file" accept="application/pdf" />
 
-      <section class="panel">
-        <h2>2) Incarca eseul PDF</h2>
-        <input id="pdfInput" type="file" accept="application/pdf" />
-        <p id="status" class="status">Astept un fisier PDF...</p>
-      </section>
+          <h2>2) Cheie OpenAI (opțional)</h2>
+          <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" />
 
-      <section class="grid">
-        <article class="panel">
-          <h2>Rezumat rapid</h2>
-          <button id="summarizeBtn" disabled>Genereaza rezumat</button>
-          <div id="summary" class="result"></div>
-        </article>
-
-        <article class="panel">
-          <h2>Carduri de invatare</h2>
-          <button id="flashcardsBtn" disabled>Genereaza carduri</button>
-          <ul id="flashcards" class="flashcards"></ul>
-        </article>
-      </section>
-
-      <section class="panel">
-        <h2>Asistent AI (Q&A)</h2>
-        <div id="chat" class="chat"></div>
-        <div class="chat-controls">
-          <textarea id="question" placeholder="Ex: Care este tema centrala si cum o argumenteaza autorul?"></textarea>
-          <button id="askBtn" disabled>Intreaba AI</button>
+          <button id="extractBtn">Extrage textul și pregătește rezumatul</button>
+          <p id="status" class="status">Aștept un fișier PDF...</p>
         </div>
+
+        <h3>Previzualizare text extras</h3>
+        <div id="preview" class="preview">Aici va apărea textul extras din PDF.</div>
+
+        <div class="tools-grid">
+          <article class="tool">
+            <h3>Rezumat inteligent</h3>
+            <button id="summaryBtn" disabled>Generează rezumat</button>
+            <div id="summary" class="result"></div>
+          </article>
+
+          <article class="tool">
+            <h3>Plan de învățare (pas cu pas)</h3>
+            <button id="planBtn" disabled>Generează plan</button>
+            <ol id="plan" class="result-list"></ol>
+          </article>
+
+          <article class="tool">
+            <h3>Mock test (antrenament)</h3>
+            <button id="mockBtn" disabled>Generează mock test</button>
+            <div id="mock" class="result"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card right">
+        <h2>Asistent de învățare</h2>
+        <div id="chat" class="chat"></div>
+        <textarea
+          id="question"
+          placeholder="Ex: Explică tema și viziunea despre lume în acest eseu."
+        ></textarea>
+        <button id="askBtn" disabled>Întreabă AI-ul</button>
+        <p class="hint">
+          Sugestii: „Fă-mi 5 întrebări de verificare”, „Explică simplu fiecare paragraf”,
+          „Dă-mi un plan de învățare în 20 de minute”.
+        </p>
       </section>
     </main>
 

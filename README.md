@@ -1,26 +1,27 @@
-# Esee AI Coach
+# MentorEseu AI
 
-Aplicatie web simpla pentru a incarca eseuri PDF la romana si a primi explicatii de la un asistent AI.
+Site pentru învățarea eseurilor la română din PDF, cu:
+- extragere text din PDF
+- rezumat rapid
+- plan de învățare pas cu pas
+- mock tests automate
+- chat AI (dacă introduci cheia OpenAI în interfață)
 
-## Rulare locala
+## Rulare locală
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Deschide apoi `http://localhost:8000`.
+Apoi deschide `http://localhost:8000`.
 
-## Functionalitati
+## De ce nu e cheia API în cod?
 
-- incarcare PDF si extragere text in browser (pdf.js)
-- sumar automat local al eseului
-- chat AI pe baza continutului PDF-ului (prin OpenAI API key)
-- carduri de invatare generate automat
+Nu este sigur să pui cheia OpenAI direct în cod (poate fi furată imediat). Aplicația cere cheia în interfață, local, la runtime.
 
-## Configurare AI
+## Dacă AI-ul spune că nu poate răspunde
 
-1. Introdu cheia OpenAI in campul dedicat (ramane doar in sesiunea browserului)
-2. Incarca PDF-ul
-3. Pune intrebari despre eseu in chat
-
-Daca nu introduci cheia API, aplicatia ofera doar functionalitatile locale (rezumat + carduri).
+1. verifică dacă cheia API este corectă
+2. verifică dacă ai credit/billing activ pe cont
+3. încearcă din nou întrebarea după ce ai extras textul din PDF
+4. verifică consola browserului pentru erori HTTP
